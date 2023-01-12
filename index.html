@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+  <style>
+    .d-n{
+      display: none;
+    }
+    div[data-ul2]{
+      display: flex;
+      flex-direction:column-reverse;
+    }
+    ul[data-ul2] li{
+      display: flex;
+      flex-direction:column;
+    }
+    body{
+      background-color: #01f8fe;
+    }
+    ul{
+      display: flex;
+      flex-direction: column;
+    }li span{
+      font-size: 4vh;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+    form .parent{
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      
+    }
+    form{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    input{
+      width:200px;
+    }
+</style>
+  <form data-form>
+    <div class="parent">
+      <div>
+        <input data-input  id="i1"  required>
+        <label for="i1"> name of film</label>
+      </div>
+      <div>
+        <input data-input1 id="i2"  required>
+        <label for="i2"> rating of film</label>
+      </div>
+      <div>
+        <input data-input2 id="i3" required>
+        <label for="i3">image url</label>
+      </div>
+    </div>
+    <button type="submit">yaratish</button>
+  </form>
+  <ul data-ul3>
+    <div data-ul2>
+      
+    </div>
+  </ul>
+  <ul data-ul=""></ul>
+  <script src="./js/movies.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
