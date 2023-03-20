@@ -23,11 +23,14 @@
       <div class="box-input">
         <form data-input-search>
           <input
+            name="search"
             class="input-box"
             type="search"
             data-form-search
-            placeholder="Search"
-          />
+            placeholder="Search"/>
+            <button type="submit" class="btn-primary">
+              SEARCH
+            </button>
         </form>
         <form class="form-input-box" data-form>
           <input
@@ -88,7 +91,7 @@
             </p>
             <p data-date></p>
             <p data-count></p>
-            <span class="diagram"></span>
+            <span data-diagram class="diagram"></span>
           </div>
         </div>
       </template>
@@ -116,6 +119,6 @@
       </div>
     </div>
     <script src="./js/movies.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/api.js"></script>
   </body>
 </html>
