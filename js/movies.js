@@ -1,5 +1,6 @@
-const movies = [
+let movies = [
   {
+
     adult: false,
     backdrop_path: "/7ZO9yoEU2fAHKhmJWfAc2QIPWJg.jpg",
     genre_ids: [28, 878, 27],

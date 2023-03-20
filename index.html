@@ -1,79 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-  <style>
-    .d-n{
-      display: none;
-    }
-    div[data-ul2]{
-      display: flex;
-      flex-direction:column-reverse;
-    }
-    ul[data-ul2] li{
-      display: flex;
-      flex-direction:column;
-    }
-    body{
-      background-color: #01f8fe;
-    }
-    ul{
-      display: flex;
-      flex-direction: column;
-    }li span{
-      font-size: 4vh;
-      display: flex;
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-    }
-    form .parent{
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      
-    }
-    form{
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    input{
-      width:200px;
-    }
-</style>
-  <form data-form>
-    <div class="parent">
-      <div>
-        <input data-input  id="i1"  required>
-        <label for="i1"> name of film</label>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies</title>
+    <link rel="stylesheet" href="css/bootstrapt.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Cedarville+Cursive&family=Livvic:wght@600;700&family=M+PLUS+Rounded+1c:wght@500;700&family=Montserrat:wght@400;500;600;700&family=Mulish:wght@400;700&family=Oleo+Script+Swash+Caps&family=Paytone+One&family=Permanent+Marker&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;600;700&family=Quicksand:wght@700&family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <a class="for-text-d" href="#"><h1 class="logo-site">MOVIES</h1></a>
+
+      <!-- form -->
+      <div class="box-input">
+        <form data-input-search>
+          <input
+            class="input-box"
+            type="search"
+            data-form-search
+            placeholder="Search"
+          />
+        </form>
+        <form class="form-input-box" data-form>
+          <input
+            class="input-box"
+            type="text"
+            data-form-title
+            placeholder="Title"
+          />
+          <input
+            class="input-box"
+            type="text"
+            data-form-lang
+            placeholder="Language"
+          />
+          <input
+            class="input-box"
+            type="text"
+            data-form-description
+            placeholder="Description"
+          />
+          <input
+            class="input-box"
+            type="text"
+            data-form-img-url
+            placeholder="Image Url:"
+          />
+          <button class="input-box input-add" type="submit" data-add-btn>
+            Add
+          </button>
+        </form>
       </div>
-      <div>
-        <input data-input1 id="i2"  required>
-        <label for="i2"> rating of film</label>
-      </div>
-      <div>
-        <input data-input2 id="i3" required>
-        <label for="i3">image url</label>
+      <!-- form end -->
+      <div class="movie-item-box" data-box-movie></div>
+      <!-- template -->
+      <template data-movie-template>
+        <div class="movie-item">
+          <!-- <img class="movie-item__new" src="./img/new.gif" alt="new"> -->
+          <div>
+            <img class="movie-item__img" width="220" height="340" />
+          </div>
+          <div class="movie-card">
+            <h3 class="movie-card__title"></h3>
+            <div class="about">
+              <div data-movie-id>i</div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template data-template>
+        <div class="movie-about-div">
+          <div class="left-about">
+            <img data-img-movie src="./img/close.svg" alt="" />
+          </div>
+          <div class="right-about">
+            <p data-title-movie></p>
+            <p data-overage></p>
+            <p data-overview>
+            </p>
+            <p data-date></p>
+            <p data-count></p>
+            <span class="diagram"></span>
+          </div>
+        </div>
+      </template>
+      <!-- template -->
+    </div>
+    <div data-modal="" class="modal d-none">
+      <div data-modal-content="" class="modal-content">
+        <div class="modal-content-close">
+          <svg
+            width="48"
+            height="48"
+            xmlns="http://www.w3.org/2000/svg"
+            style="transform: scale(0.5)"
+            data-close-modal
+          >
+            <path
+              d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <ul data-ul2="" class="modal-pokemons">
+          
+        </ul>
       </div>
     </div>
-    <button type="submit">yaratish</button>
-  </form>
-  <ul data-ul3>
-    <div data-ul2>
-      
-    </div>
-  </ul>
-  <ul data-ul=""></ul>
-  <script src="./js/movies.js"></script>
-  <script src="./js/main.js"></script>
-</body>
+    <script src="./js/movies.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
 </html>

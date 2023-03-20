@@ -1,60 +1,129 @@
-var elUL = document.querySelector('[data-ul]');
-var elUL2 = document.querySelector('[data-ul2]');
-var elinput = document.querySelector('[data-input]');
-var elinput1 = document.querySelector('[data-input1]');
-var elinput2 = document.querySelector('[data-input2]');
-var elform = document.querySelector('[data-form]');
+//movie-inner
+var elMovieBox = document.querySelector("[data-box-movie]");
+//movie-form
+var elForm = document.querySelector("[data-form]");
+var elInputSearch = document.querySelector("[data-form-search]");
+var elTitle = document.querySelector("[data-form-title]");
+var elLang = document.querySelector("[data-form-lang]");
+var elDescription = document.querySelector("[data-form-description]");
+var elImgUrl = document.querySelector("[data-form-img-url]");
+var elBtn = document.querySelector("[data-add-btn]");
+var elTemplate = document.querySelector("[data-movie-template]");
+var elTemplateAbout = document.querySelector("[data-template]");
 
 
-elform.addEventListener('submit',function (evt){
+
+renderMovie(movies);
+elForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-    var elli = document.createElement("li")
-    var elspan = document.createElement("span")
-    var elimg = document.createElement("img")
-    elspan.setAttribute("data-elspan" , "")
-    elUL2.appendChild(elli)
-    elli.appendChild(elspan)
-    elli.appendChild(elimg)
-    elimg.style.marginTop = "100px"
-    elspan.style.marginBottom = "100px"
-    elli.style.display = "contents"
-    elspan.style.color = "rgba(255 , 255 , 255 , 0.9)"
-    elspan.style.padding = "10px"
-    elspan.style.backgroundColor = "rgba(0 , 0 , 0 , 0.3)"
-    elimg.setAttribute("src" , `${elinput2.value}`)
-    elspan.textContent=`name ${(elinput.value)} - rating   \u{2B50}${elinput1.value}\u{2B50}`
-    elinput.value = ""
-    elinput1.value = ""
-    elinput2.value = ""
+  let idsHave = [];
+  movies.forEach((a) => {
+    idsHave.push(a.id);
+  });
+  const movie = {
+    title: null,
+    id: null,
+    language: null,
+    description: null,
+    poster_path: null,
+  };
+  movie.id = Math.trunc(Math.random() * 1000000);
+  movie.title = elTitle.value;
+  movie.language = elLang.value;
+  movie.description = elDescription.value;
+  movie.poster_path = elImgUrl.value;
+
+  // elMovieBox.prepend(createLi(movie));
+  movies.unshift(movie);
+  renderMovie(movies);
+});
+document.body.addEventListener("click", (evt) => {
+  modalCloseModal(evt);
+  modalOpenModal(evt);
 });
 
-for (let i = 0; i < movies.length; i++) {
-    const element = movies[i];
-    var elli = document.createElement("li")
-    var elspan = document.createElement("span")
-    var elimg = document.createElement("img")
-    // elspan.setAttribute("data-elspan" , "")
-    elUL.appendChild(elli)
-    elli.appendChild(elimg)
-    elli.appendChild(elspan)
-    elimg.style.marginTop = "100px"
-    elimg.style.border = "5px solid black"
-    elspan.style.marginBottom = "100px"
-    elli.style.position="relative"
-    elli.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${element.poster_path})`
-    elli.style.margin ="50px"
-    elli.style.alignItems ="center"
-    elli.style.padding = "10px"
-    elli.style.listStyle = "none"
-    elli.style.gap ="25px"
-    elli.style.display = "contents"
-    elspan.style.color = "rgba(255 , 255 , 255 , 0.9)"
-    elspan.style.padding = "10px"
-    elspan.style.backgroundColor = "rgba(0 , 0 , 0 , 0.3)"
-    elimg.setAttribute("src" , `https://image.tmdb.org/t/p/w500${element.poster_path}`)
-    if(element.original_title!=element.title){
-      elspan.textContent=`name in ENGLISH 🇺🇸 ${(element.title)} 🇺🇸 original name 📄${(element.original_title)}📄 - rating   \u{2B50}${element.vote_average}\u{2B50}`
-    }if(element.original_title===element.title){
-      elspan.textContent=`name of film 📄${(element.original_title)}📄 - rating   \u{2B50}${element.vote_average}\u{2B50}`
-    }
+function renderMovie(array) {
+  elMovieBox.innerHTML = "";
+  array.forEach((movie) => {
+    elMovieBox.appendChild(createLi(movie));
+  });
+}
+
+function createLi(movie) {
+  const card = elTemplate.content.cloneNode(true);
+  card.querySelector(
+    ".movie-item__img"
+  ).src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  card.querySelector(".movie-item__img").alt = movie.title;
+  card.querySelector(".movie-card__title").textContent = movie.title;
+  card.querySelector("[data-movie-id]").dataset.id = +movie.id;
+  return card;
+}
+
+function createDiv(movie) {
+  const card = elTemplateAbout.content.cloneNode(true);
+  card.querySelector(
+    "[data-img-movie]"
+  ).src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  card.querySelector("[data-img-movie]").alt = movie.title;
+  card.querySelector("[data-title-movie]").textContent = movie.title;
+  card.querySelector(
+    "[data-overage]"
+  ).textContent = `⭐${movie.vote_average}⭐`;
+  card.querySelector("[data-overview]").textContent = movie.overview;
+  card.querySelector("[data-date]").textContent = movie.release_date;
+  card.querySelector("[data-count]").textContent = movie.vote_count;
+  card.querySelector(".diagram").style.backgroundImage = colorDiagram(movie.vote_average)
+
+  return card;
+}
+
+elInputSearch.addEventListener("input", (evt) => {
+  searchMovie(movies);
+});
+
+function searchMovie(array) {
+  const newNames = array.filter((one) =>
+    one.title.toLowerCase().includes(elInputSearch.value.toLowerCase())
+  );
+  renderMovie(newNames);
+}
+
+function modalOpen(el) {
+  el.classList.toggle("d-none");
+  el.classList.toggle("d-flex");
+}
+
+function modalCloseModal(e) {
+  let elM = e.target.closest("[data-modal]");
+  if (!elM) return;
+  modalOpen(elM);
+}
+
+function modalOpenModal(e) {
+  let elM = e.target.closest("[data-movie-id]");
+  if (!elM) return;
+  console.log(elM);
+  let id = elM.dataset.id;
+  let modal = document.querySelector("[data-modal]");
+  console.log(modal);
+  modalOpen(modal);
+  aboutMovie(id);
+}
+
+function aboutMovie(num) {
+  let aboutUl = document.querySelector("[data-ul2]");
+  let movie = movies.find((a) => a.id == +num);
+  aboutUl.innerHTML = "";
+  aboutUl.append(createDiv(movie));
+}
+
+function colorDiagram(reating) {
+  return ` linear-gradient(
+    to right , 
+    yellow 0%,
+    yellow ${reating *10}%,
+    white ${reating *10}%,
+    white 100%,
+  )`;
 }
