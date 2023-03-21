@@ -18,10 +18,9 @@ elMovieBox.innerHTML = `<div class="loader">
 <span></span>
 <span></span>
 <span></span>
-</div>`
+</div>`;
 
-searchMovie("movie")
-
+searchMovie("movie");
 
 const elForm = document.querySelector("[data-input-search]");
 elForm.addEventListener("submit", (evt) => {
@@ -37,9 +36,13 @@ document.body.addEventListener("click", (evt) => {
 });
 
 async function searchMovie(value) {
-  let response = await fetch(`${apiKey}&s=${value}`);
-  let result = await response.json();
-  renderMovie(result);
+  try {
+    let response = await fetch(`${apiKey}&s=${value}`);
+    let result = await response.json();
+    renderMovie(result);
+  } catch (error) {
+    renderE(error);
+  }
 }
 
 function renderMovie(arrayFirst) {
@@ -81,32 +84,38 @@ function modalOpenModal(e) {
 let aboutUl = document.querySelector("[data-ul2]");
 
 async function aboutMovie(num) {
+  try {
     aboutUl.innerHTML = `<div class="loader">
     <span></span>
     <span></span>
     <span></span>
-  </div>`
+  </div>`;
     let response = await fetch(`${apiKey}&i=${num}`);
     let result = await response.json();
     // renderMovie(result)
-    
+
     aboutUl.innerHTML = "";
-  // let movie =    // movies.find((a) => a.id == +num);
-  aboutUl.append(createDiv(result));
+    // let movie =    // movies.find((a) => a.id == +num);
+    aboutUl.append(createDiv(result));
+  } catch (error) {
+    renderE(error);
+  }
 }
 
 function createDiv(movie) {
-    aboutUl.innerHTML = ""
+  aboutUl.innerHTML = "";
   const card = elTemplateAbout.content.cloneNode(true);
   card.querySelector("[data-img-movie]").src = movie.Poster;
   card.querySelector("[data-img-movie]").alt = movie.Title;
   card.querySelector("[data-title-movie]").textContent = movie.Title;
-  card.querySelector(
-    "[data-overage]"
-  ).textContent = `⭐${movie.imdbRating}⭐`;
+  card.querySelector("[data-overage]").textContent = `⭐${movie.imdbRating}⭐`;
   card.querySelector("[data-overview]").textContent = movie.Plot;
   card.querySelector("[data-date]").textContent = movie.Released;
   card.querySelector("[data-count]").textContent = movie.Language;
 
   return card;
+}
+
+function renderE(err) {
+  console.log(err);
 }
