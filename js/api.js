@@ -1,6 +1,6 @@
 const key = "f56bbb3a";
-const apiKey = `http://www.omdbapi.com/?apikey=${key}`;
-const apiKeyImg = `http://img.omdbapi.com/?apikey=${key}`;
+const apiKey = `https://www.omdbapi.com/?apikey=${key}`;
+const apiKeyImg = `https://img.omdbapi.com/?apikey=${key}`;
 //movie-inner
 let elMovieBox = document.querySelector("[data-box-movie]");
 //movie-form
