@@ -276,6 +276,7 @@ body {
 }
 .left-about:hover .about-movie-absolute-mask .bottom-mask div {
   display: flex;
+  align-items: center;
 }
 
 .loader span {
