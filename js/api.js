@@ -69,7 +69,12 @@ function modalOpen(el) {
 
 function modalCloseModal(e) {
   let elM = e.target.closest("[data-modal]");
+  let elMC = e.target.closest("[data-modal-content]")
+  let elMClose = e.target.closest("[data-close-modal]")
   if (!elM) return;
+  if (!elMClose){
+    if (elMC) return;
+  };
   modalOpen(elM);
 }
 
