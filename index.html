@@ -13,11 +13,14 @@
       href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Cedarville+Cursive&family=Livvic:wght@600;700&family=M+PLUS+Rounded+1c:wght@500;700&family=Montserrat:wght@400;500;600;700&family=Mulish:wght@400;700&family=Oleo+Script+Swash+Caps&family=Paytone+One&family=Permanent+Marker&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;600;700&family=Quicksand:wght@700&family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="website icon" href="./img/movie.svg" />
   </head>
 
   <body>
     <div class="container">
-      <a class="for-text-d" href="#"><h1 class="logo-site">MOVIES</h1></a>
+      <a class="for-text-d" href="https://movies-nodirbek0105.netlify.app"
+        ><h1 class="logo-site">MOVIES</h1></a
+      >
 
       <!-- form -->
       <div class="box-input">
@@ -27,40 +30,11 @@
             class="input-box"
             type="search"
             data-form-search
-            placeholder="Search"/>
-            <button type="submit" class="btn-primary">
-              SEARCH
-            </button>
+            placeholder="Search"
+          />
+          <button type="submit" class="btn-primary">SEARCH</button>
         </form>
-        <form class="form-input-box" data-form>
-          <input
-            class="input-box"
-            type="text"
-            data-form-title
-            placeholder="Title"
-          />
-          <input
-            class="input-box"
-            type="text"
-            data-form-lang
-            placeholder="Language"
-          />
-          <input
-            class="input-box"
-            type="text"
-            data-form-description
-            placeholder="Description"
-          />
-          <input
-            class="input-box"
-            type="text"
-            data-form-img-url
-            placeholder="Image Url:"
-          />
-          <button class="input-box input-add" type="submit" data-add-btn>
-            Add
-          </button>
-        </form>
+        <!-- <form class="form-input-box" data-form><input class="input-box" type="text" data-form-title placeholder="Title"/><input class="input-box" type="text" data-form-lang placeholder="Language"/><input class="input-box" type="text" data-form-description placeholder="Description"/><input class="input-box" type="text" data-form-img-url placeholder="Image Url:"/><button class="input-box input-add" type="submit" data-add-btn> Add</button></form> -->
       </div>
       <!-- form end -->
       <div class="movie-item-box" data-box-movie></div>
@@ -82,13 +56,26 @@
       <template data-template>
         <div class="movie-about-div">
           <div class="left-about">
-            <img data-img-movie src="./img/close.svg" alt="" />
+            <img data-img-movie src="" alt="" />
+            <div class="about-movie-absolute-mask">
+              <div class="bottom-mask">
+                <div class="visibility">
+                  <img src="./img/visibility.svg" alt="" />
+                  <span data-visibility=""></span>
+                </div>
+                <div class="runtime">
+                  <span class="img">
+                    <svg  xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path fill="#fff" d="m7 8 3.7 7.6h6.5L13.5 8h4.45l3.7 7.6h6.5L24.45 8h4.45l3.7 7.6h6.5L35.4 8H41q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9H7q-1.2 0-2.1-.9Q4 38.2 4 37V11q0-1.2.9-2.1Q5.8 8 7 8Zm0 10.6V37h34V18.6Zm0 0V37Z"/></svg>
+                  </span>
+                  <span data-runtime=""></span>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="right-about">
             <p data-title-movie></p>
             <p data-overage></p>
-            <p data-overview>
-            </p>
+            <p data-overview></p>
             <p data-date></p>
             <p data-count></p>
             <span data-diagram class="diagram"></span>
@@ -113,9 +100,7 @@
             />
           </svg>
         </div>
-        <ul data-ul2="" class="modal-pokemons">
-          
-        </ul>
+        <ul data-ul2="" class="modal-pokemons"></ul>
       </div>
     </div>
     <!-- <script src="./js/movies.js"></script> -->

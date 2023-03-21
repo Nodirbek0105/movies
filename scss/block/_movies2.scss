@@ -64,6 +64,13 @@ body {
   margin-top: 30px;
 }
 
+[data-input-search] {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .input-box {
   width: 150px;
   height: 40px;
@@ -173,7 +180,7 @@ body {
 .about {
   color: #fff;
   font-size: 18px;
-  [data-movie-id]{
+  [data-movie-id] {
     display: flex;
     border-radius: 50%;
     border: 1px solid #fff;
@@ -224,57 +231,109 @@ body {
   }
 }
 
-.movie-about-div{
+.movie-about-div {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  .right-about{
+  .right-about {
     max-width: 50%;
-    .diagram{
+    .diagram {
       width: 100%;
       display: inline-block;
       height: 20px;
     }
   }
-  .left-about{
+  .left-about {
     max-width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 }
-.loader span{
+
+.diagram {
+  border: 1px black solid;
+  display: flex;
+  align-items: center;
+}
+.left-about {
+  max-width: 250px;
+  min-height: 55px;
+  border-radius: 2px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: var(--bg-card-background);
+  position: relative;
+  justify-content: center;
+  transition: 0.5s linear;
+  .about-movie-absolute-mask {
+    display: none;
+  }
+  &:hover {
+    .about-movie-absolute-mask {
+      width: 100%;
+      height: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      position: absolute;
+      color: #fff;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      padding: 20px;
+      .bottom-mask{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        div{
+          display: flex;
+          
+        }
+      }
+    }
+  }
+}
+
+.loader span {
   display: inline-block;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #03a9f4;
   margin: 0 10px;
 }
 
-.loader span:nth-child(1){
-    animation: 1s jump infinite ease-in-out;
+.loader span:nth-child(1) {
+  animation: 1s jump infinite ease-in-out;
+  background-color: blue;
 }
 
-.loader span:nth-child(2){
-    animation: 1s 0.333s jump infinite ease-in-out;
+.loader span:nth-child(2) {
+  animation: 1s 0.333s jump infinite ease-in-out;
+  background-color: red;
 }
 
-.loader span:nth-child(3){
-    animation: 1s 0.667s jump infinite ease-in-out;
+.loader span:nth-child(3) {
+  animation: 1s 0.667s jump infinite ease-in-out;
+  background-color: green;
 }
 
-@keyframes jump{
-  0%{
+@keyframes jump {
+  0% {
     transform: translateY(0) scale(1);
   }
-  30%{
+  30% {
     transform: translateY(-20px) scale(1.2);
   }
-  75%{
+  75% {
     transform: translateY(0) scale(1);
   }
+}
 
+.btn-primary {
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 13px;
 }

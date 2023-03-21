@@ -15,9 +15,9 @@ let elTemplate = document.querySelector("[data-movie-template]");
 let elTemplateAbout = document.querySelector("[data-template]");
 
 elMovieBox.innerHTML = `<div class="loader">
-<span></span>
-<span></span>
-<span></span>
+<span class="first"></span>
+<span class="second"></span>
+<span class="third"></span>
 </div>`;
 
 searchMovie("movie");
@@ -86,10 +86,10 @@ let aboutUl = document.querySelector("[data-ul2]");
 async function aboutMovie(num) {
   try {
     aboutUl.innerHTML = `<div class="loader">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>`;
+    <span class="first"></span>
+    <span class="second"></span>
+    <span class="third"></span>
+    </div>`;
     let response = await fetch(`${apiKey}&i=${num}`);
     let result = await response.json();
     // renderMovie(result)
@@ -112,6 +112,19 @@ function createDiv(movie) {
   card.querySelector("[data-overview]").textContent = movie.Plot;
   card.querySelector("[data-date]").textContent = movie.Released;
   card.querySelector("[data-count]").textContent = movie.Language;
+  card.querySelector(".diagram").style.backgroundImage = `linear-gradient(
+    to right,
+    yellow 0%,
+    yellow ${movie.imdbRating * 10}%,
+    white ${movie.imdbRating * 10}%,
+    white 100%
+)`;
+  card.querySelector(".diagram").textContent = movie.imdbRating;
+  card.querySelector(".diagram").style.paddingLeft = `${
+    movie.imdbRating * 10 - 3
+  }%`;
+  card.querySelector("[data-runtime]").textContent = movie.Runtime;
+  card.querySelector("[data-visibility]").textContent = movie.imdbVotes;
 
   return card;
 }
