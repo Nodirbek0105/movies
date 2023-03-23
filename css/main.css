@@ -195,7 +195,7 @@ body {
 .modal .modal-content .modal-content-close {
   color: var(--black-white);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: start;
 }
 .modal .modal-content .modal-pokemons {
