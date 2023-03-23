@@ -14,9 +14,8 @@ let elBtn = document.querySelector("[data-add-btn]");
 let elTemplate = document.querySelector("[data-movie-template]");
 let elTemplateAbout = document.querySelector("[data-template]");
 
-
-loadingFirst()
-async function loadingFirst(){
+loadingFirst();
+async function loadingFirst() {
   elMovieBox.innerHTML = `<div class="inner" style="width: 200px; height: 200px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(22, 29, 37); display: block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
   <g transform="rotate(0 50 50)">
     <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#aaaaaa">
@@ -67,8 +66,8 @@ async function loadingFirst(){
       <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
     </rect>
   </g>
-  </svg></div>`
-  await searchMovie("movie")
+  </svg></div>`;
+  await searchMovie("movie");
 }
 // searchMovie("movie");
 
@@ -119,12 +118,12 @@ function modalOpen(el) {
 
 function modalCloseModal(e) {
   let elM = e.target.closest("[data-modal]");
-  let elMC = e.target.closest("[data-modal-content]")
-  let elMClose = e.target.closest("[data-close-modal]")
+  let elMC = e.target.closest("[data-modal-content]");
+  let elMClose = e.target.closest("[data-close-modal]");
   if (!elM) return;
-  if (!elMClose){
+  if (!elMClose) {
     if (elMC) return;
-  };
+  }
   modalOpen(elM);
 }
 
@@ -140,58 +139,7 @@ let aboutUl = document.querySelector("[data-ul2]");
 
 async function aboutMovie(num) {
   try {
-    aboutUl.innerHTML = 
-    elMovieBox.innerHTML = `<div class="inner" style="width: 200px; height: 200px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#fff;display:block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-    <g transform="rotate(0 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(30 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(60 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(90 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(120 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(150 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(180 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(210 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(240 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(270 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(300 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
-      </rect>
-    </g><g transform="rotate(330 50 50)">
-      <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#000000">
-        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
-      </rect>
-    </g>
-    </svg></div>`;
+    aboutUl.innerHTML = `<div class="loading"><span></span><span></span><span></span></div>`;
     let response = await fetch(`${apiKey}&i=${num}`);
     let result = await response.json();
     // renderMovie(result)
