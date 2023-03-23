@@ -114,24 +114,12 @@ body {
   justify-content: space-between;
   padding: 20px;
 }
-.movie-item .parent-img {
-  position: relative;
-  transition: 0.5s linear;
-}
-.movie-item .parent-img .about {
-  display: none;
-}
-.movie-item .parent-img:hover .about {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
+.movie-item .about {
   display: flex;
   align-items: center;
   justify-content: end;
-  padding: 20px;
 }
-.movie-item .parent-img:hover .about div {
+.movie-item .about div {
   cursor: pointer;
 }
 
