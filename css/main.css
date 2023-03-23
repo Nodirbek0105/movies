@@ -279,6 +279,10 @@ body {
   align-items: center;
 }
 
+[data-img-movie] {
+  max-width: 95%;
+}
+
 .loader span {
   display: inline-block;
   width: 30px;
