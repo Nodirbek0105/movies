@@ -11,7 +11,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .container {
@@ -164,6 +164,9 @@ body {
       align-items: center;
       justify-content: end;
       padding: 20px;
+      div{
+        cursor: pointer;
+      }
     }
   }
 }
@@ -192,7 +195,10 @@ body {
 }
 
 .modal {
-  align-items: center;
+  @media (min-width:827px) {
+    align-items: center;
+  }
+  align-items: start;
   justify-content: center;
   inset: 0;
   transition: 0.5s linear;
@@ -201,6 +207,8 @@ body {
     background-color: #fff;
     max-width: 80%;
     padding: 0 0 48px 0;
+    position: relative;
+    height: min-content;
     @media (max-width: 500px) {
       max-width: 95%;
     }
@@ -209,6 +217,10 @@ body {
       display: flex;
       align-items: flex-end;
       justify-content: start;
+      width: 100%;
+      // position: absolute;
+      // left: 10px;
+      // top: 0;
     }
     .modal-pokemons {
       display: flex;

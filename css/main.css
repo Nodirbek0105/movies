@@ -10,7 +10,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .container {
@@ -152,6 +152,9 @@ body {
   justify-content: end;
   padding: 20px;
 }
+.movie-card:hover .about div {
+  cursor: pointer;
+}
 
 .movie-card__title {
   font-size: 16px;
@@ -176,16 +179,24 @@ body {
 }
 
 .modal {
-  align-items: center;
+  align-items: start;
   justify-content: center;
   inset: 0;
   transition: 0.5s linear;
   background-color: rgba(0, 0, 0, 0.5);
 }
+@media (min-width: 827px) {
+  .modal {
+    align-items: center;
+  }
+}
 .modal .modal-content {
   background-color: #fff;
   max-width: 80%;
   padding: 0 0 48px 0;
+  position: relative;
+  height: -moz-min-content;
+  height: min-content;
 }
 @media (max-width: 500px) {
   .modal .modal-content {
@@ -197,6 +208,7 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: start;
+  width: 100%;
 }
 .modal .modal-content .modal-pokemons {
   display: flex;

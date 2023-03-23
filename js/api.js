@@ -13,6 +13,7 @@ let elImgUrl = document.querySelector("[data-form-img-url]");
 let elBtn = document.querySelector("[data-add-btn]");
 let elTemplate = document.querySelector("[data-movie-template]");
 let elTemplateAbout = document.querySelector("[data-template]");
+let closeModal = document.querySelector('[data-close-modal]');
 
 elMovieBox.innerHTML = `<div class="loader">
 <span class="first"></span>
