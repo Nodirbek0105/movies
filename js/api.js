@@ -95,6 +95,13 @@ async function searchMovie(value , page=1) {
   }
 }
 
+function clickPage(evt){
+  let el = evt.target.closest("[data-page]")
+  if(!el) return
+  evt.preventDefault()
+  searchMovie(el.dataset.value , el.dataset.page)
+}
+
 function renderMovie(arrayFirst) {
   let array = arrayFirst.Search;
   elMovieBox.innerHTML = "";
@@ -146,7 +153,6 @@ async function aboutMovie(num) {
     // renderMovie(result)
 
     aboutUl.innerHTML = "";
-    console.log(result);
     aboutUl.append(createDiv(result));
   } catch (error) {
     renderE(error);
@@ -185,6 +191,11 @@ function renderE(err) {
 }
 
 let listPagination = document.querySelector('[data-pagination]');
+
+listPagination.addEventListener("click" , e=>{
+  e.preventDefault()
+  clickPage(e)
+})
 
 async function renderPagination(pages , query , page){
   let html = ""
