@@ -67,9 +67,8 @@ async function loadingFirst() {
     </rect>
   </g>
   </svg></div>`;
-  await searchMovie("movie");
+  await searchMovie("hulk");
 }
-// searchMovie("movie");
 
 const elForm = document.querySelector("[data-input-search]");
 elForm.addEventListener("submit", (evt) => {
