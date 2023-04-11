@@ -83,22 +83,22 @@ document.body.addEventListener("click", (evt) => {
   modalOpenModal(evt);
 });
 
-async function searchMovie(value , page=1) {
+async function searchMovie(value, page = 1) {
   try {
     let response = await fetch(`${apiKey}&s=${value}&page=${page}`);
     let result = await response.json();
     renderMovie(result);
-    renderPagination(Math.ceil(+result.totalResults/10), value , page)
+    renderPagination(Math.ceil(+result.totalResults / 10), value, page);
   } catch (error) {
     renderE(error);
   }
 }
 
-function clickPage(evt){
-  let el = evt.target.closest("[data-page]")
-  if(!el) return
-  evt.preventDefault()
-  searchMovie(el.dataset.value , el.dataset.page)
+function clickPage(evt) {
+  let el = evt.target.closest("[data-page]");
+  if (!el) return;
+  evt.preventDefault();
+  searchMovie(el.dataset.value, el.dataset.page);
 }
 
 function renderMovie(arrayFirst) {
@@ -111,7 +111,10 @@ function renderMovie(arrayFirst) {
 
 function createLi(movie) {
   const card = elTemplate.content.cloneNode(true);
-  card.querySelector(".movie-item__img").src = (movie.Poster === "N/A" ? "https://via.placeholder.com/220x340" : movie.Poster);
+  card.querySelector(".movie-item__img").src =
+    movie.Poster === "N/A"
+      ? "https://via.placeholder.com/220x340"
+      : movie.Poster;
   card.querySelector(".movie-item__img").alt = movie.Title;
   card.querySelector(".movie-card__title").textContent = movie.Title;
   card.querySelector("[data-movie-id]").dataset.id = movie.imdbID;
@@ -161,7 +164,10 @@ async function aboutMovie(num) {
 function createDiv(movie) {
   aboutUl.innerHTML = "";
   const card = elTemplateAbout.content.cloneNode(true);
-  card.querySelector("[data-img-movie]").src = (movie.Poster === "N/A" ? "https://via.placeholder.com/220x340" : movie.Poster);
+  card.querySelector("[data-img-movie]").src =
+    movie.Poster === "N/A"
+      ? "https://via.placeholder.com/220x340"
+      : movie.Poster;
   card.querySelector("[data-img-movie]").alt = movie.Title;
   card.querySelector("[data-title-movie]").textContent = movie.Title;
   card.querySelector("[data-overage]").textContent = `⭐${movie.imdbRating}⭐`;
@@ -189,20 +195,30 @@ function renderE(err) {
   console.log(err);
 }
 
-let listPagination = document.querySelector('[data-pagination]');
+let listPagination = document.querySelector("[data-pagination]");
 
-listPagination.addEventListener("click" , e=>{
-  e.preventDefault()
-  clickPage(e)
-})
+listPagination.addEventListener("click", (e) => {
+  e.preventDefault();
+  clickPage(e);
+});
 
-async function renderPagination(pages , query , page){
-  let html = ""
-  html+= `<li class="page-item${+page === 1 ? " disabled" : ""}"><a class="page-link" data-page=${+page - 1} data-value=${query} href="?page=${+page - 1}">Previous</a></li>`
+async function renderPagination(pages, query, page) {
+  let html = "";
+  html += `<li class="page-item${
+    +page === 1 ? " disabled" : ""
+  }"><a class="page-link" data-page=${
+    +page - 1
+  } data-value=${query} href="?page=${+page - 1}">Previous</a></li>`;
   for (let i = 1; i <= pages; i++) {
-  html+= `<li class="page-item${+page === +i ? " active" : ""}"><a class="page-link" data-page=${i} data-value=${query} href="?page=${i}">${i}</a></li>`    
+    html += `<li class="page-item${
+      +page === +i ? " active" : ""
+    }"><a class="page-link" data-page=${i} data-value=${query} href="?page=${i}">${i}</a></li>`;
   }
-  html += `<li class="page-item${+page === +pages ? " disabled" : ""}"><a class="page-link" data-page=${+page+1} data-value=${query}  href="?page=${+page+1}">Next</a></li>`
-  listPagination.innerHTML = html
+  html += `<li class="page-item${
+    +page === +pages ? " disabled" : ""
+  }"><a class="page-link" data-page=${
+    +page + 1
+  } data-value=${query}  href="?page=${+page + 1}">Next</a></li>`;
+  listPagination.innerHTML = html;
+  listPagination.style.maxWidth = (window.innerWidth / 100) * 80;
 }
-

@@ -325,4 +325,39 @@ body {
   border: none;
   outline: none;
   border-radius: 13px;
+}
+
+.pagination-div {
+  margin-left: 20px;
+}
+
+.pagination {
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+
+.pagination > li > a {
+  text-decoration: none;
+}
+
+.list {
+  display: inline-block;
+  padding: 5px;
+  color: white;
+  font-size: 14px;
+  font-weight: normal;
+  background: #a197f8;
+  cursor: pointer;
+  position: relative;
+  border-radius: 4px 4px 4px 4px;
+}
+
+h2 {
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.simple-pagination {
+  display: flex;
+  justify-content: center;
 }/*# sourceMappingURL=main.css.map */
