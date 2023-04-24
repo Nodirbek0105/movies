@@ -16,6 +16,7 @@ let elTemplateAbout = document.querySelector("[data-template]");
 
 loadingFirst();
 async function loadingFirst() {
+  // pagination.style.display = "none"
   elMovieBox.innerHTML = `<div class="inner" style="width: 200px; height: 200px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(22, 29, 37); display: block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
   <g transform="rotate(0 50 50)">
     <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#aaaaaa">
@@ -68,6 +69,7 @@ async function loadingFirst() {
   </g>
   </svg></div>`;
   await searchMovie("hulk");
+  // pagination.style.display = "flex"
 }
 
 const elForm = document.querySelector("[data-input-search]");
@@ -88,7 +90,10 @@ async function searchMovie(value, page = 1) {
     let response = await fetch(`${apiKey}&s=${value}&page=${page}`);
     let result = await response.json();
     renderMovie(result);
-    renderPagination(Math.ceil(+result.totalResults / 10), value, page);
+    total = Math.ceil(+result.totalResults / 10)
+    // index = value
+  slide( index , value, page);
+  // slide(Math.ceil(+result.totalResults / 10), value, page);
   } catch (error) {
     renderE(error);
   }
@@ -195,12 +200,11 @@ function renderE(err) {
   console.log(err);
 }
 
-let listPagination = document.querySelector("[data-pagination]");
 
-listPagination.addEventListener("click", (e) => {
-  e.preventDefault();
-  clickPage(e);
-});
+// listPagination.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   clickPage(e);
+// });
 
 async function renderPagination(pages, query, page) {
   let html = "";
@@ -219,6 +223,6 @@ async function renderPagination(pages, query, page) {
   }"><a class="page-link" data-page=${
     +page + 1
   } data-value=${query}  href="?page=${+page + 1}">Next</a></li>`;
-  listPagination.innerHTML = html;
-  listPagination.style.maxWidth = (window.innerWidth / 100) * 80;
+  // listPagination.innerHTML = html;
+  // listPagination.style.maxWidth = (window.innerWidth / 100) * 80;
 }
