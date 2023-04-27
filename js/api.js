@@ -16,6 +16,16 @@ let elTemplateAbout = document.querySelector("[data-template]");
 
 loadingFirst();
 async function loadingFirst() {
+  if (document.querySelector(".counter").innerHTML === "") {
+    document.querySelectorAll(".paginate").forEach((button) => {
+      button.style.display = "none";
+    });
+  }
+  if (document.querySelector(".counter").innerHTML !== "") {
+    document.querySelectorAll(".paginate").forEach((button) => {
+      button.style.display = "flex";
+    });
+  }
   // pagination.style.display = "none"
   elMovieBox.innerHTML = `<div class="inner" style="width: 200px; height: 200px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(22, 29, 37); display: block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
   <g transform="rotate(0 50 50)">
@@ -87,13 +97,23 @@ document.body.addEventListener("click", (evt) => {
 
 async function searchMovie(value, page = 1) {
   try {
+    if (document.querySelector(".counter").innerHTML === "") {
+      document.querySelectorAll(".paginate").forEach((button) => {
+        button.style.display = "none";
+      });
+    }
+    if (document.querySelector(".counter").innerHTML !== "") {
+      document.querySelectorAll(".paginate").forEach((button) => {
+        button.style.display = "flex";
+      });
+    }
     let response = await fetch(`${apiKey}&s=${value}&page=${page}`);
     let result = await response.json();
     renderMovie(result);
-    total = Math.ceil(+result.totalResults / 10)
+    total = Math.ceil(+result.totalResults / 10);
     // index = value
-  slide( index , value, page);
-  // slide(Math.ceil(+result.totalResults / 10), value, page);
+    slide(index, value, page);
+    // slide(Math.ceil(+result.totalResults / 10), value, page);
   } catch (error) {
     renderE(error);
   }
@@ -199,7 +219,6 @@ function createDiv(movie) {
 function renderE(err) {
   console.log(err);
 }
-
 
 // listPagination.addEventListener("click", (e) => {
 //   e.preventDefault();
